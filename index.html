@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Umesh Aggarwal — Director Robotics Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2563EB;
+      --blue-light: #eff6ff;
+      --black: #0f0f0f;
+      --mid: #6b7280;
+      --light: #e5e7eb;
+      --bg: #fafafa;
+      --max: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.8rem;
+      padding: 1rem 2.5rem;
+      background: rgba(250,250,250,0.93);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      border-bottom: 1px solid var(--light);
+    }
+    nav a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--blue); }
+
+    /* LAYOUT */
+    main { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--light);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2.5rem;
+    }
+
+    /* HERO */
+    #hero {
+      padding-top: 9rem;
+      padding-bottom: 5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: start;
+    }
+    .hero-content {}
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      margin-bottom: 1.4rem;
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--mid);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .hero-stat-num {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--mid);
+      margin-top: 0.2rem;
+      letter-spacing: 0.04em;
+    }
+    .hero-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .hero-links a {
+      font-size: 0.83rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--black);
+      border-bottom: 1.5px solid var(--blue);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+    .hero-links a:hover { color: var(--blue); }
+    .hero-links a.btn {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .hero-links a.btn:hover { background: #1d4ed8; color: #fff; }
+
+    /* PROFILE PHOTO */
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--light);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--light);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-photo .photo-placeholder {
+      font-size: 0.7rem;
+      color: var(--mid);
+      text-align: center;
+      padding: 1rem;
+      line-height: 1.5;
+    }
+
+    /* ABOUT */
+    #about p {
+      font-size: 1.02rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #374151;
+      max-width: 660px;
+    }
+    #about p + p { margin-top: 1rem; }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      padding: 1.8rem 0 1.8rem 1.6rem;
+      border-left: 2px solid var(--light);
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .exp-item:hover { border-left-color: var(--blue); }
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: 2.1rem;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--light);
+      transition: background 0.2s;
+    }
+    .exp-item:hover::before { background: var(--blue); }
+    .exp-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.25rem;
+    }
+    .exp-company {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .exp-period {
+      font-size: 0.75rem;
+      color: var(--mid);
+    }
+    .exp-role {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 0.6rem;
+    }
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .exp-bullets li {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: #4b5563;
+      line-height: 1.65;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--light);
+      font-weight: 300;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 2.2rem;
+    }
+    .skill-group-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag {
+      font-size: 0.76rem;
+      color: #374151;
+      background: #f3f4f6;
+      border: 1px solid var(--light);
+      padding: 0.22rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* MEDIA — photos & videos */
+    #media .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .media-card {
+      aspect-ratio: 4/3;
+      background: #f3f4f6;
+      border: 1px solid var(--light);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .media-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .media-card iframe {
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .media-placeholder {
+      text-align: center;
+      padding: 1rem;
+    }
+    .media-placeholder .mp-icon { font-size: 1.5rem; margin-bottom: 0.4rem; color: var(--mid); }
+    .media-placeholder p { font-size: 0.72rem; color: var(--mid); line-height: 1.5; }
+    .media-placeholder code {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.65rem;
+      color: var(--blue);
+      word-break: break-all;
+    }
+
+    .media-section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+    .media-section-label:first-of-type { margin-top: 0; }
+
+    /* VIDEO GRID */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .video-card {
+      aspect-ratio: 16/9;
+      background: #f3f4f6;
+      border: 1px solid var(--light);
+      border-radius: 3px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-card iframe { width: 100%; height: 100%; border: none; }
+
+    /* PROJECTS */
+    .project-list { display: flex; flex-direction: column; gap: 2rem; }
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--light);
+    }
+    .project-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .project-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 0.3rem;
+    }
+    .project-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: #4b5563;
+      line-height: 1.65;
+    }
+    .project-stack {
+      font-size: 0.7rem;
+      color: var(--blue);
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+      padding-top: 0.2rem;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .cert-card {
+      border: 1px solid var(--light);
+      border-radius: 3px;
+      padding: 1.2rem;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    .cert-card:hover { border-color: var(--blue); }
+    .cert-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 0.3rem;
+    }
+    .cert-issuer {
+      font-size: 0.75rem;
+      color: var(--mid);
+      font-weight: 300;
+    }
+    .cert-placeholder {
+      border: 1px dashed var(--light);
+      border-radius: 3px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .cert-placeholder p {
+      font-size: 0.75rem;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+
+    /* EDUCATION */
+    .edu-item { margin-bottom: 1.5rem; }
+    .edu-degree { font-size: 1rem; font-weight: 500; color: var(--black); }
+    .edu-school { font-size: 0.88rem; color: var(--mid); font-weight: 300; margin-top: 0.15rem; }
+    .edu-year { font-size: 0.78rem; color: var(--mid); margin-top: 0.1rem; }
+
+    /* CONTACT */
+    #contact p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 1.8rem;
+      max-width: 520px;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 0.7rem; }
+    .contact-links a {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      transition: color 0.2s;
+    }
+    .contact-links a:hover { color: var(--blue); }
+    .c-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 0.9rem;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      font-size: 0.73rem;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 620px) {
+      nav { gap: 1rem; padding: 0.9rem 1.2rem; font-size: 0.68rem; }
+      main { padding: 0 1.2rem; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-photo { display: none; }
+      .media-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-grid { grid-template-columns: 1fr; }
+      .project-item { grid-template-columns: 1fr; }
+      .project-stack { padding-top: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#media">Media</a>
+  <a href="#projects">Projects</a>
+  <a href="#certifications">Certs</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Director Robotics Software · Noida, India</p>
+      <h1 class="hero-name">Umesh<br>Aggarwal</h1>
+      <p class="hero-tagline">
+        10+ years building autonomous robots — from CBRNE field robots to warehouse AMR fleets. I own the full stack: sensors, SLAM, navigation, and fleet-scale deployment.
+      </p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-label">Years experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">14</div>
+          <div class="hero-stat-label">Engineers led</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">Robot platforms shipped</div>
+        </div>
+      </div>
+      <div class="hero-links">
+        <a href="mailto:umesh.1991.aggarwal@gmail.com">umesh.1991.aggarwal@gmail.com</a>
+        <a href="https://linkedin.com/in/Umesh-Aggarwal" target="_blank">LinkedIn</a>
+        <a href="Resume_Umesh_Agg.pdf" download class="btn">Download CV</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <!-- REPLACE src below with your direct Google Drive image URL:
+           https://drive.google.com/uc?export=view&id=YOUR_FILE_ID -->
+      <div class="photo-placeholder">
+        📷<br>Add your<br>profile photo<br>here
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <p>
+      Dynamic Technical Project Manager and robotics engineer with 10+ years of experience leading multidisciplinary teams delivering complex software and hardware solutions. Expert in software architecture, project management, and problem-solving across the full product lifecycle.
+    </p>
+    <p>
+      I've shipped autonomous systems across radically different environments — CBRNE unmanned ground vehicles for DRDO, outdoor terrain-traversal robots, indoor warehouse AMRs, and smart delivery robots for hospitality. Currently directing robotics software at Alphadroid, building a modular AMR platform on NVIDIA Jetson Orin with a ROS2 autonomy stack.
+    </p>
+    <p>
+      Fluent in English (TOEFL 90). Strong communicator who bridges research, software, hardware, and stakeholders.
+    </p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-company">Alphadroid</span>
+          <span class="exp-period">Oct 2024 – Present · Noida</span>
+        </div>
+        <p class="exp-role">Director, Robotics Software</p>
+        <ul class="exp-bullets">
+          <li>Leading adoption of NVIDIA Jetson Orin Nano as edge-AI platform, developing a ROS2 autonomy stack with LiDAR and camera pipelines and hardware-accelerated perception.</li>
+          <li>Spearheading design of a modular robotic base platform in four payload variants (100 kg, 300 kg, 500 kg, 1000 kg) for diverse operational environments.</li>
+          <li>Designed a robotic manipulator for automated dish cleaning — utensil handling, washing, and stacking.</li>
+          <li>Built a smart delivery robot with intelligent trays that detect item placement/removal, with autonomous navigation and obstacle avoidance for hotels and retail.</li>
+          <li>Managing the robotics department: product innovation, strategic planning, and system optimization aligned to business goals.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-company">Falcon Autotech</span>
+          <span class="exp-period">Mar 2024 – Sep 2024 (8 mo) · Noida</span>
+        </div>
+        <p class="exp-role">Senior Principal Engineer</p>
+        <ul class="exp-bullets">
+          <li>Led a multidisciplinary team (design, electrical, software) developing next-generation warehouse automation for logistics.</li>
+          <li>Used MoveIt for motion planning in robotic welding and parcel sorting — collision-aware trajectory generation and flexible manipulation workflows.</li>
+          <li>Architected multi-robot path-planning software with global route optimisation, collision avoidance, and deadlock-free traffic management.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-company">Novus Hi-Tech Robotic Systemz</span>
+          <span class="exp-period">Apr 2021 – Feb 2024 (2 Y 11 M) · Gurugram</span>
+        </div>
+        <p class="exp-role">Technical Team Lead</p>
+        <ul class="exp-bullets">
+          <li>Led a team of 14 software and research engineers on autonomous navigation, obstacle detection, terrain traversability estimation, and localization for indoor/outdoor robots.</li>
+          <li>Spearheaded software architecture design and technology selection across multiple projects, delivering scalable solutions on time.</li>
+          <li>Drove ROS1 → ROS2 migration for a significant portion of the codebase in a compressed timeline.</li>
+          <li>Produced and oversaw critical technical documentation: SRS, SDD, STP, Traceability Matrix, ICD.</li>
+          <li>Delivered 2 complete projects, with one achieving a milestone that resulted in significant revenue generation.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-company">Novus Robotic Systemz</span>
+          <span class="exp-period">Apr 2019 – Mar 2021 (2 Y) · Gurugram</span>
+        </div>
+        <p class="exp-role">Senior Research Engineer</p>
+        <ul class="exp-bullets">
+          <li>Migrated PLC control logic to NVIDIA Jetson Orin AGX with ROS2-based control nodes, validating real-time performance and fail-safe behavior in production.</li>
+          <li>Designed and implemented a QR code + 3D LiDAR hybrid localization system for a Pallet Picker material handling robot.</li>
+          <li>Worked on ADAS vector maps to implement global and local planners for autonomous vehicles.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-company">Novus Robotic Systemz</span>
+          <span class="exp-period">Feb 2017 – Mar 2019 (2 Y 2 M) · Gurugram</span>
+        </div>
+        <p class="exp-role">Research Engineer</p>
+        <ul class="exp-bullets">
+          <li>Developed and deployed a CBRNE UGV currently operational at DRDO India — led from software development through deployment.</li>
+          <li>Implemented robot localization using Visual SLAM techniques.</li>
+          <li>Modified the Pure Pursuit algorithm for a self-driving vehicle.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-company">Cube26</span>
+          <span class="exp-period">Jun 2015 – Jan 2017 (1 Y 8 M) · New Delhi</span>
+        </div>
+        <p class="exp-role">Research Engineer</p>
+        <ul class="exp-bullets">
+          <li>Implemented Vector Field Force and Vector Field Histogram algorithms for obstacle avoidance on ROS for Mahindra Rise Driverless Car Challenge.</li>
+          <li>Developed indoor navigation algorithm for a smart robotic cleaner and moper.</li>
+          <li>Wrote firmware for BLE products (Smart Kettle, Smart Bulb Reos Lite).</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+
+      <div>
+        <p class="skill-group-title">Robotics & Autonomy</p>
+        <div class="skill-tags">
+          <span class="skill-tag">ROS</span>
+          <span class="skill-tag">ROS2</span>
+          <span class="skill-tag">Nav2</span>
+          <span class="skill-tag">MoveIt</span>
+          <span class="skill-tag">SLAM</span>
+          <span class="skill-tag">Visual SLAM</span>
+          <span class="skill-tag">Pure Pursuit</span>
+          <span class="skill-tag">Simulation</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-group-title">Sensors & Perception</p>
+        <div class="skill-tags">
+          <span class="skill-tag">LiDAR (3D)</span>
+          <span class="skill-tag">Camera pipelines</span>
+          <span class="skill-tag">QR localization</span>
+          <span class="skill-tag">ADAS maps</span>
+          <span class="skill-tag">Obstacle detection</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-group-title">Languages</p>
+        <div class="skill-tags">
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">QT C++</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Linux</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-group-title">Infrastructure & Tools</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Azure DevOps</span>
+          <span class="skill-tag">Microsoft Teams</span>
+          <span class="skill-tag">System Engineering</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-group-title">Hardware Platforms</p>
+        <div class="skill-tags">
+          <span class="skill-tag">NVIDIA Jetson Orin</span>
+          <span class="skill-tag">Jetson AGX</span>
+          <span class="skill-tag">BLE firmware</span>
+          <span class="skill-tag">PLC → ROS2</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="skill-group-title">Leadership</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Team Leadership</span>
+          <span class="skill-tag">Software Architecture</span>
+          <span class="skill-tag">Project Management</span>
+          <span class="skill-tag">Stakeholder Mgmt</span>
+          <span class="skill-tag">Technical Docs</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media">
+    <p class="section-label">Media</p>
+
+    <p class="media-section-label">Photos</p>
+    <div class="media-grid">
+      <!-- PHOTO SLOTS: Replace the placeholder divs with <img> tags -->
+      <!-- Example: <img src="https://drive.google.com/uc?export=view&id=YOUR_FILE_ID" alt="Robot demo" /> -->
+
+      <div class="media-card">
+        <div class="media-placeholder">
+          <div class="mp-icon">🤖</div>
+          <p>Photo 1<code>Replace with image URL</code></p>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-placeholder">
+          <div class="mp-icon">🤖</div>
+          <p>Photo 2<code>Replace with image URL</code></p>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-placeholder">
+          <div class="mp-icon">🤖</div>
+          <p>Photo 3<code>Replace with image URL</code></p>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-placeholder">
+          <div class="mp-icon">🤖</div>
+          <p>Photo 4<code>Replace with image URL</code></p>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-placeholder">
+          <div class="mp-icon">🤖</div>
+          <p>Photo 5<code>Replace with image URL</code></p>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-placeholder">
+          <div class="mp-icon">🤖</div>
+          <p>Photo 6<code>Replace with image URL</code></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="media-section-label">Videos</p>
+    <div class="video-grid">
+      <!-- VIDEO SLOTS: Replace placeholder divs with YouTube iframes -->
+      <!-- Example: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+
+      <div class="video-card">
+        <div class="media-placeholder">
+          <div class="mp-icon">▶️</div>
+          <p>Video 1<code>Paste YouTube embed URL</code></p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="media-placeholder">
+          <div class="mp-icon">▶️</div>
+          <p>Video 2<code>Paste YouTube embed URL</code></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Notable Projects</p>
+    <div class="project-list">
+
+      <div class="project-item">
+        <div>
+          <p class="project-name">CBRNE Unmanned Ground Vehicle — DRDO India</p>
+          <p class="project-desc">Led end-to-end development and deployment of a CBRNE UGV currently operational at DRDO. Continues to evolve with ongoing customer collaboration for new features.</p>
+        </div>
+        <span class="project-stack">ROS · C++</span>
+      </div>
+
+      <div class="project-item">
+        <div>
+          <p class="project-name">Modular AMR Platform (Alphadroid)</p>
+          <p class="project-desc">Designing a scalable robotic base in four payload variants (100–1000 kg) on NVIDIA Jetson Orin Nano with a full ROS2 autonomy stack — LiDAR, camera, hardware-accelerated perception.</p>
+        </div>
+        <span class="project-stack">ROS2 · Jetson Orin</span>
+      </div>
+
+      <div class="project-item">
+        <div>
+          <p class="project-name">Smart Delivery Robot</p>
+          <p class="project-desc">Autonomous delivery robot with intelligent trays that detect item placement and removal, enabling context-aware navigation in dynamic hotel and retail environments.</p>
+        </div>
+        <span class="project-stack">ROS2 · Nav2</span>
+      </div>
+
+      <div class="project-item">
+        <div>
+          <p class="project-name">Multi-Robot Path Planning System (Falcon Autotech)</p>
+          <p class="project-desc">Architected fleet-level path planning with global route optimisation, collision avoidance, and deadlock-free traffic management across a heterogeneous robot fleet.</p>
+        </div>
+        <span class="project-stack">C++ · ROS2 · MoveIt</span>
+      </div>
+
+      <div class="project-item">
+        <div>
+          <p class="project-name">Hybrid LiDAR + QR Localization (Pallet Picker)</p>
+          <p class="project-desc">Designed and implemented a dual-modality localization system combining QR codes and 3D LiDAR for reliable positioning in cluttered warehouse aisles.</p>
+        </div>
+        <span class="project-stack">ROS · 3D LiDAR</span>
+      </div>
+
+      <div class="project-item">
+        <div>
+          <p class="project-name">Mahindra Rise Driverless Car Challenge</p>
+          <p class="project-desc">Implemented Vector Field Force and Vector Field Histogram obstacle avoidance algorithms on ROS for Cube26's self-driving vehicle entry.</p>
+        </div>
+        <span class="project-stack">ROS · C++</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <p class="section-label">Certifications</p>
+    <div class="cert-grid">
+      <!-- Add your certifications below. Example:
+      <div class="cert-card">
+        <p class="cert-name">ROS2 for Beginners</p>
+        <p class="cert-issuer">Udemy · 2023</p>
+      </div>
+      -->
+      <div class="cert-placeholder">
+        <p>🏅 Add your certifications here.<br><br>Copy the cert-card block and fill in name + issuer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">Education</p>
+    <div class="edu-item">
+      <p class="edu-degree">B.Tech. — Electrical & Electronics Engineering</p>
+      <p class="edu-school">Delhi Technological University (formerly Delhi College of Engineering)</p>
+      <p class="edu-year">Aug 2011 – Jun 2015</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <p>
+      Open to senior robotics engineering and leadership roles, consulting engagements, or research collaborations. Based in Noida, India.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:umesh.1991.aggarwal@gmail.com">
+        <span class="c-icon">✉</span>
+        umesh.1991.aggarwal@gmail.com
+      </a>
+      <a href="tel:+919958126280">
+        <span class="c-icon">☎</span>
+        +91 99581 26280
+      </a>
+      <a href="https://linkedin.com/in/Umesh-Aggarwal" target="_blank">
+        <span class="c-icon">in</span>
+        linkedin.com/in/Umesh-Aggarwal
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Umesh Aggarwal · New Delhi, India
+</footer>
+
+</body>
+</html>
