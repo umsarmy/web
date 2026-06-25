@@ -339,11 +339,12 @@
     /* VIDEO GRID */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 560px);
       gap: 1rem;
     }
     .video-card {
-      aspect-ratio: 16/9;
+      width: 560px;
+      height: 315px;
       background: #f3f4f6;
       border: 1px solid var(--light);
       border-radius: 3px;
@@ -352,7 +353,13 @@
       align-items: center;
       justify-content: center;
     }
-    .video-card iframe { width: 100%; height: 100%; border: none; }
+    .video-card iframe { width: 560px; height: 315px; border: none; }
+
+    @media (max-width: 1200px) {
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-card { width: 100%; height: auto; aspect-ratio: 16/9; }
+      .video-card iframe { width: 100%; height: 100%; }
+    }
 
     /* PROJECTS */
     .project-list { display: flex; flex-direction: column; gap: 2rem; }
@@ -769,7 +776,7 @@
       <div class="video-card">
         <div class="media-placeholder">
           <!-- <div class="mp-icon"></div> -->
-          <p>Video 1<code><iframe src="https://drive.google.com/file/d/1lvK5UmcbIl6K6Ij1USmcMs3EHLxqy-X5/preview" allowfullscreen></iframe></code></p>
+          <p><code><iframe src="https://drive.google.com/file/d/1lvK5UmcbIl6K6Ij1USmcMs3EHLxqy-X5/preview" allowfullscreen></iframe></code></p>
         </div>
       </div>
       <div class="video-card">
